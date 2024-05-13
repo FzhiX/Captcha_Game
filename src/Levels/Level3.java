@@ -51,7 +51,7 @@ public class Level3 extends Level {
 
     public void generateButtons() {
         picturesFrame = new PicturesFrame(p);
-        picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin);
+        picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin, 3);
     }
 
     public void update() {

@@ -24,7 +24,7 @@ public class ScreenManager {
     }
 
     public void render() {
-        if (!gameManager.failed || !gameManager.win) {
+        if (!gameManager.failed && !gameManager.win) {
             gameManager.level.continueButton.render(p);
         }
     }

@@ -12,7 +12,7 @@ public class GameManager {
     ScreenManager screenManager;
     public boolean isCorrect = false;
     public boolean failed = false;
-    public int currentLevel = 5;
+    public int currentLevel = 1;
     public Level level;
     public boolean newLevel = true;
     public boolean win = false;
