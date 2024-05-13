@@ -13,6 +13,7 @@ public class Level3 extends Level {
     int picsHigh = 3;
     int picsWide = 3;
     int topMargin = 50;
+    int picframeBorderWidth = 3;
     private String fileLocation = "Images/picsLVL2og3/";
     private String[][] fileNames;
     private String filetype = ".png";
@@ -46,7 +47,7 @@ public class Level3 extends Level {
             }
         }
 
-        picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin);
+        picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin, picframeBorderWidth);
     }
 
     public void update() {
@@ -66,7 +67,7 @@ public class Level3 extends Level {
         p.textSize(textSize);
         p.text(task, p.width / 2, topMarginText);
 
-        picturesFrame.pictureFrameNByN(picFrame, picW, picH, picsWide, picsHigh, topMarginText + textSize / 2);
+        picturesFrame.pictureFrameNByN(picFrame, picW, picH, picsWide, picsHigh, topMarginText + textSize / 2, picframeBorderWidth);
     }
 
     public boolean checkIfLevelIsCorrect(){

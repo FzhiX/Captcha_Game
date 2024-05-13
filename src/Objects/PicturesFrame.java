@@ -7,7 +7,6 @@ import Objects.*;
 
 public class PicturesFrame {
     PApplet p;
-    int borderWidth = 3;
     public Button[][] buttons;
     int picsWide, picsHigh;
 
@@ -15,18 +14,17 @@ public class PicturesFrame {
         this.p = p;
     }
 
-    public void picFrameButtons(int picW, int picH, int picsWide, int picsHigh, int topMargin) {
-        buttons = new Button[picsWide][picsHigh];
+    public void picFrameButtons(int picW, int picH, int picsWide, int picsHigh, int topMargin, int borderWidth) {
+        buttons = new Button[picsHigh][picsWide];
 
         for (int y = 0; y < picsHigh; y++) {
             for (int x = 0; x < picsWide; x++) {
-                buttons[y][x] = new Button(p.width / 2 + (x - 1) * (picW + borderWidth) - picW / 2, p.height / 2 + (y - 1) * (picH + borderWidth) - picH / 2 + topMargin, picW, picH);
+                buttons[y][x] = new Button(p.width / 2 + (x - (picsWide - 1) / 2) * (picW + borderWidth) - picW / 2, p.height / 2 + (y - (picsHigh - 1) / 2) * (picH + borderWidth) - picH / 2 + topMargin, picW, picH);
             }
         }
     }
 
-    public void pictureFrameNByN(PImage[][] pics, int picW, int picH, int picsWide, int picsHigh, int topMargin) {
-       
+    public void pictureFrameNByN(PImage[][] pics, int picW, int picH, int picsWide, int picsHigh, int topMargin, int borderWidth) {
         p.imageMode(PConstants.CENTER);
 
         
@@ -41,14 +39,14 @@ public class PicturesFrame {
 
         for (int y = 0; y < picsHigh; y++) {
             for (int x = 0; x < picsWide; x++) {
-                p.image(pics[y][x], p.width / 2 + (x - 1) * (picW + borderWidth), p.height / 2 + (y - 1) * (picH + borderWidth) + topMargin, isClicked(buttons[y][x], picW), isClicked(buttons[y][x], picH));
+                p.image(pics[y][x], p.width / 2 + (x - (picsWide - 1) / 2) * (picW + borderWidth), p.height / 2 + (y - (picsHigh - 1) / 2) * (picH + borderWidth) + topMargin, isClicked(buttons[y][x], picW), isClicked(buttons[y][x], picH));
             }
         }
     }  
 
     private int isClicked(Button buttonOnCurrPic, int picSide) {
         if (buttonOnCurrPic.isButtonClicked()) {
-            return (picSide - 50);
+            return (picSide * 4 / 5);
         }   else {
             return picSide;
         }
