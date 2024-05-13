@@ -26,7 +26,6 @@ public class Level5 extends Level {
     public Level5(PApplet p) {
         super(p);
         this.p = p;
-        setup();
     }
 
     public void setup() {

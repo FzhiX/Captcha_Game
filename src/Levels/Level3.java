@@ -7,7 +7,7 @@ public class Level3 extends Level {
     private PApplet p;
     public static boolean isCorrect = false;
     PImage[][] picFrame = new PImage[3][3];
-    PicturesFrame picturesFrame;
+    public PicturesFrame picturesFrame;
     int picW = 238;
     int picH = 238;
     int picsHigh = 3;
@@ -29,7 +29,6 @@ public class Level3 extends Level {
     public Level3(PApplet p) {
         super(p);
         this.p = p;
-        setup();
     }
 
     public void setup() {
@@ -38,7 +37,7 @@ public class Level3 extends Level {
             {"pic2,1", "pic2,2", "pic2,3"}, 
             {"pic3,1", "pic3,2", "pic3,3"}
         };
-        picturesFrame = new PicturesFrame(p);
+
         isCorrect = false;
         for (int y = 0; y < picsHigh; y++){
             for (int x = 0; x < picsWide; x++) {
@@ -46,6 +45,11 @@ public class Level3 extends Level {
             }
         }
 
+        generateButtons();
+    }
+
+    public void generateButtons() {
+        picturesFrame = new PicturesFrame(p);
         picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin);
     }
 
