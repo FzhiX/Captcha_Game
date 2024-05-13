@@ -6,6 +6,7 @@ import Objects.*;
 import Levels.*;
 
 public class GameManager {
+    Win winScreen;
     ContinueButton continueButton;
     PApplet p;
     ScreenManager screenManager;
@@ -14,6 +15,7 @@ public class GameManager {
     public int currentLevel = 5;
     public Level level;
     public boolean newLevel = true;
+    public boolean win = false;
 
     public GameManager(PApplet p) {
         this.p = p;
@@ -29,7 +31,9 @@ public class GameManager {
         checkNextLevel();
 
         setLevel(currentLevel);
-        if (!failed) {
+        if (win) {
+            winScreen(); 
+        } else if (!failed) {
             updateAndRenderLevel();
         } else {
             lossScreen();
@@ -85,6 +89,10 @@ public class GameManager {
                     // Level 5
                     level = new Level5(p);
                     break;
+                default:
+                    winScreen = new Win(p);
+                    win = true;
+                    break;
             }
         
             level.setup();
@@ -98,5 +106,9 @@ public class GameManager {
 
     public void lossScreen() {
         Loss.showLossScreen(p, currentLevel, this);
+    }
+
+    public void winScreen() {
+        winScreen.showWinScreen(p, this);
     }
 }
