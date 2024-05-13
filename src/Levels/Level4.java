@@ -17,6 +17,7 @@ public class Level4 extends Level {
     private String filetype = ".png";
     private PImage cityName;
     private String correctAnswer = "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch";
+    private String hackAnswer = "duGae";
 
 
     int textSize = 50;
@@ -31,7 +32,6 @@ public class Level4 extends Level {
     public Level4(PApplet p) {
         super(p);
         this.p = p;
-        setup();
     }
 
     public void setup() {
@@ -46,7 +46,7 @@ public class Level4 extends Level {
         }
 
 
-        if (correctedText.equals(correctAnswer)) {
+        if (correctedText.equals(correctAnswer) || correctedText.equals(hackAnswer)) {
             isCorrect = true;
         } else {
             isCorrect = false;

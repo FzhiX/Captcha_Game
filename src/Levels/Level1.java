@@ -32,7 +32,7 @@ public class Level1 extends Level {
         if (this.button.contains(p.mouseX, p.mouseY) && MH.LEFT == MH.CLICKED) {
             showPic = true;
         }
-
+        logicUpdate();
     }
 
 
@@ -68,12 +68,25 @@ public class Level1 extends Level {
             } else {
                 p.imageMode(PConstants.CORNER);
                 p.image(checkSign, button.getX(), button.getY(), button.getW(), button.getH());
-                isCorrect = true;
             }
+        }
+    }
+    
+    public void logicUpdate() {
+        if (showPic == true && rot >= 1080) {
+            isCorrect = true;
         }
     }
 
     public boolean checkIfLevelIsCorrect(){
         return isCorrect;
+    }
+
+    public void setShowPic(boolean status) { // for testing purposes
+        showPic = status;
+    }
+
+    public void setRot(int rot) { // for testing purposes
+        this.rot = rot;
     }
 }

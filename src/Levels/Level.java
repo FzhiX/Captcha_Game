@@ -26,4 +26,5 @@ public class Level {
     public boolean checkIfLevelIsCorrect() {
         return false;
     }
+
 }
