@@ -17,7 +17,7 @@ public class Level4 extends Level {
     private String filetype = ".png";
     private PImage cityName;
     private String correctAnswer = "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch";
-    private String hackAnswer = "duGae";
+    private String hackAnswer = "duGae"; // For development purposes, cheet code
 
 
     int textSize = 50;
@@ -45,12 +45,7 @@ public class Level4 extends Level {
             typedText = "";
         }
 
-
-        if (correctedText.equals(correctAnswer) || correctedText.equals(hackAnswer)) {
-            isCorrect = true;
-        } else {
-            isCorrect = false;
-        }
+        checkAnswer();
 
         textUpdate();
     }
@@ -79,6 +74,12 @@ public class Level4 extends Level {
         return isCorrect;
     }
 
+    public void checkAnswer() {
+        if (correctedText.equals(correctAnswer) || correctedText.equals(hackAnswer)) {
+            isCorrect = true;
+        }
+    }
+    
     public void textUpdate() {
         if (KBH.keyboardInput == KBH.CLICKED) {
             if (p.key == PConstants.BACKSPACE) {
@@ -113,5 +114,9 @@ public class Level4 extends Level {
                 correctedText += p.key;
             }
         }
+    }
+
+    public void changeCorrectedText(String textIn) { // For testing purposes
+        correctedText = textIn;
     }
 }

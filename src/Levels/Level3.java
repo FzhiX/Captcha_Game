@@ -51,7 +51,7 @@ public class Level3 extends Level {
 
     public void generateButtons() {
         picturesFrame = new PicturesFrame(p);
-        picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin, 3);
+        picturesFrame.picFrameButtons(picW, picH, picsWide, picsHigh, topMargin, picframeBorderWidth);
     }
 
     public void update() {
@@ -63,7 +63,6 @@ public class Level3 extends Level {
                 }
             }
         }
-        
     }
 
     public void render() {
