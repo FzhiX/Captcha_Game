@@ -1,31 +1,33 @@
 package ScreenClasses;
-import processing.core.*;
+
 import Levels.*;
-import Objects.ContinueButton;
 import LogicClasses.*;
+import Objects.ContinueButton;
+import processing.core.*;
 
 public class ScreenManager {
-    PApplet p;
-    ContinueButton continueButton;
-    Level level;
-    GameManager gameManager;
 
-    public ScreenManager(PApplet p, GameManager g) {
-        this.p = p;
-        gameManager = g;
-    }
+  PApplet p;
+  ContinueButton continueButton;
+  Level level;
+  GameManager gameManager;
 
-    public PApplet getPApplet() {
-        return p;
-    }
+  public ScreenManager(PApplet p, GameManager g) {
+    this.p = p;
+    gameManager = g;
+  }
 
-    public void setup() {
-        
-    }
+  public PApplet getPApplet() {
+    return p;
+  }
 
-    public void render() {
-        if (!gameManager.failed && !gameManager.win) {
-            gameManager.level.continueButton.render(p);
-        }
+  public void setup() {}
+
+  public void render() {
+    if (
+      !gameManager.failed && !gameManager.win && gameManager.currentLevel != 0
+    ) {
+      gameManager.level.continueButton.render(p);
     }
+  }
 }
