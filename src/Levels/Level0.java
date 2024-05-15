@@ -16,6 +16,11 @@ public class Level0 extends Level {
 
   public static boolean isCorrect = false;
   private boolean mailOpened = false;
+  private boolean mailPressed = false;
+  private boolean linkPressed = false;
+  private int rot = 0;
+
+  PImage loadImg;
 
   public Level0(PApplet p) {
     super(p);
@@ -27,6 +32,7 @@ public class Level0 extends Level {
     mail = p.loadImage(fileLocation + "mail" + filetype);
 
     link = new Button((p.width / 2) - 520, (p.height / 2) + 180, 650, 50);
+    loadImg = p.loadImage("LoadPng.png");
   }
 
   public void update() {
@@ -34,14 +40,27 @@ public class Level0 extends Level {
     p.image(background, 0, 0, p.width, p.height);
 
     if (
-      mailButton.contains(p.mouseX, p.mouseY) &&
-      MH.LEFT == MH.CLICKED &&
-      !mailButton.isButtonClicked()
-    ) {
+      mailButton.contains(p.mouseX, p.mouseY) && MH.LEFT == MH.CLICKED && !mailButton.isButtonClicked()) {
       mailButton.changeClickState();
-      p.delay(3000);
 
-      mailOpened = true;
+      mailPressed = true;
+    }
+
+    if (mailPressed) {
+      if (rot < 1080) {
+        p.imageMode(PConstants.CENTER);
+        p.pushMatrix();
+        p.translate(p.mouseX - 5, p.mouseY - 5);
+        p.rotate(PApplet.radians(rot));
+        p.image(loadImg, 0, 0, 20, 20);
+        p.rotate(0);
+        p.popMatrix();
+        p.imageMode(PConstants.CORNER);
+        rot += 12;
+      } else {
+        mailOpened = true;
+      }
+
     }
 
     if (mailOpened) {
@@ -49,7 +68,23 @@ public class Level0 extends Level {
       p.image(mail, p.width / 2, p.height / 2, 1040, 710);
 
       if (link.contains(p.mouseX, p.mouseY) && MH.LEFT == MH.CLICKED) {
-        p.delay(3000);
+        rot = 0;
+        linkPressed = true;
+      }
+    }
+
+    if (linkPressed) {
+      if (rot < 1080) {
+        p.imageMode(PConstants.CENTER);
+        p.pushMatrix();
+        p.translate(p.mouseX - 5, p.mouseY - 5);
+        p.rotate(PApplet.radians(rot));
+        p.image(loadImg, 0, 0, 20, 20);
+        p.rotate(0);
+        p.popMatrix();
+        p.imageMode(PConstants.CORNER);
+        rot += 12;
+      } else {
         isCorrect = true;
       }
     }
